@@ -5,14 +5,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" type="image/x-icon" href="images/icon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/icons/icon.ico" />
     <link rel="stylesheet" href="css/style.css">
     <title>Weather-app</title>
+
 </head>
 
-<body>
+<div id="wrapper">
+    <div id="cloudBack">
+        <h1>Weather Application</h1>
+
+        <h2 id="currentCity">Sofia</h2>
+    </div>
+
+    <div id="searchContainer">
+        <div id="leftSearch" class="search">
+            <label for="search">Search</label>
+            <input type="text" id="search" value="">
+            <button id="searchBtn">Search</button>
+        </div>
+        <div id="rightSearch" class="search">
+            <label for="lat">Latitude</label>
+            <input type="text" id="lat" value="42.698334">
+            <label for="lng">Longitude</label>
+            <input type="text" id="lng" value="23.319941">
+            <button id="locSubmit">Update</button>
+        </div>
+    </div>
+
+    <div id="weatherContainer">
+
+        <div id="selectorTabs">
+            <ul id="daySelector">
+                <li button id="daySelect" value="today">5 day</li>
+                <li button id="unit" value="metric">&deg;F</li>
+            </ul>
+        </div>
+
+        <div id="weatherBox">
+            <div class="weatherBox todayBox active">
+                <h2>Today's Weather</h2>
+                <div class="todayInfo" id="todayLeft"></div>
+                <div class="todayInfo" id="todayCenter"></div>
+                <div class="todayInfo" id="todayRight"></div>
+            </div>
+            <div class="weatherBox fiveDayBox" id="day0"></div>
+            <div class="weatherBox fiveDayBox" id="day1"></div>
+            <div class="weatherBox fiveDayBox" id="day2"></div>
+            <div class="weatherBox fiveDayBox" id="day3"></div>
+            <div class="weatherBox fiveDayBox" id="day4"></div>
+        </div>
+    </div>
+
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnzC1NPu7bJILwvIlRTb95J3Pl2gJsWgA"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/script.js"></script>
+
 
 </body>
-<script src="js/script.js"></script>
 
 </html>
