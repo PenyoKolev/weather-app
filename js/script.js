@@ -1,8 +1,13 @@
 $(document).ready(function () {
 
+    $.getJSON("https://ipapi.co/jsonp/?callback=?", function (data) {
+        $("#lat").val(data.latitude);
+        $("#lng").val(data.longitude);
+    });
+
     var lat = $("#lat").val();
     var lng = $("#lng").val();
-    var unit = $("#unit").val();
+    var unit = "metric";
     var selectDay = $("#daySelect").val();
     var address;
     var idVar;
@@ -75,7 +80,7 @@ $(document).ready(function () {
             $(".weatherBox").removeClass("active");
             $(".todayBox").addClass("active");
             $("#daySelect").html("5 Day");
-            
+
         } else {
             selectDay = "today";
             $(".weatherBox").removeClass("active five");
@@ -92,14 +97,7 @@ $(document).ready(function () {
         } else {
             unit = "metric";
             $("#unit").html("&deg;F");
-
         }
-        loadWeather();
-    });
-
-    $("#locSubmit").click(function () {
-        lat = $("#lat").val();
-        lng = $("#lng").val();
         loadWeather();
     });
 
@@ -119,8 +117,9 @@ $(document).ready(function () {
             }
         });
     });
+
     function updateInputs() {
-        $("#lat").val(lat.toFixed(6)); 
+        $("#lat").val(lat.toFixed(6));
         $("#lng").val(lng.toFixed(6));
     }
     loadWeather();

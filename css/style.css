@@ -14,13 +14,6 @@ body {
   margin: 0 auto;
 }
 
-#cloudBack {
-  background-image: url("/images/background.png");
-  background-repeat: no-repeat;
-  background-size: 60% 105%;
-  background-position: center;
-}
-
 #weatherContainer {
   background-color: darkblue;
   margin: 0 auto;
