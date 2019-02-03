@@ -1,168 +1,33 @@
-@import url('https://fonts.googleapis.com/css?family=Baloo');
+html * {
+  background-color: #0D47A1;
+}
 
 body {
-  width: 100%;
   margin: 0;
-  background-color: #A3CCFF;
   text-align: center;
-  font-family: 'Baloo', cursive;
 }
 
-#wrapper {
-  width: 95%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-#weatherContainer {
-  background-color: darkblue;
-  margin: 0 auto;
-  width: 90%;
+header {
+  color: white;
+  margin-bottom: 5%;
 }
 
 .weatherBox {
-  background-color: #ffffff;
   text-align: center;
-  border-bottom: 2px solid #b0b0b0;
   display: none;
-  border-right: 2px solid #b0b0b0;
   margin-right: -4px;
 }
 
-.five {
-  width: 19%;
-}
-
 .active {
+  color: white;
   display: inline-block !important;
 }
 
 .todayBox {
   width: 95%;
   text-align: center;
-  border-bottom: 2px solid #b0b0b0;
   margin: 0 auto;
   display: none;
-  background: #fff;
-}
-
-p {
-  font-size: .85em;
-  margin: 8px auto;
-}
-
-#map {
-  width: 90%;
-  height: 400px;
-  margin: 0 auto;
-}
-
-h1 {
-  font-size: 4.5vw;
-  margin-bottom: 0;
-  margin-top: 0;
-}
-
-h2 {
-  font-size: 3.2vw;
-  margin: 0 auto;
-  color: #00008B;
-}
-
-.search {
-  display: inline-block;
-}
-
-#leftSearch {
-  text-align: left;
-  width: 44%;
-}
-
-#rightSearch {
-  text-align: right;
-  width: 54%;
-}
-
-#searchContainer {
-  width: 80%;
-  margin: 0 auto;
-  color: #00008B;
-}
-
-#daySelector {
-  color: #fff;
-  padding-left: 0;
-  list-style: none;
-  width: 100%;
-  margin: 0 0 5px 0;
-}
-
-#daySelector>li {
-  font-weight: bold;
-  font-size: 1.2em;
-  width: 15%;
-  min-width: 60px;
-  padding: 5px 0;
-  display: inline-block;
-  margin: 0 3%;
-  border-bottom: 2px solid #fff;
-  border-right: 1px solid #fff;
-  border-left: 1px solid #fff;
-  border-bottom-left-radius: 15%;
-  border-bottom-right-radius: 15%;
-}
-
-#daySelector>li:hover {
-  background: white;
-  color: #00008B;
-}
-
-.todayBox>h3 {
-  margin: 0 300px 0 0;
-}
-
-.todayInfo>img {
-  width: 100px;
-  height: 100px;
-}
-
-.todayInfo {
-  display: inline-block;
-  width: 30%;
-}
-
-#todayLeft,
-#todayCenter {
-  vertical-align: top;
-}
-
-.todayInfo>p {
-  font-size: 1em;
-  margin: 0 0 18px 0;
-}
-
-.todayInfo>h3 {
-  font-size: 1.4em;
-}
-
-#todayRight>h3 {
-  margin: 0 auto;
-}
-
-#todayLeft>h3 {
-  margin: 0 0 24px 0;
-}
-
-.weatherBox h2 {
-  font-size: 1.6em;
-}
-
-.todayBox h2 {
-  font-size: 2em;
-}
-
-h3 {
-  margin: 0 auto;
 }
 
 #loader {
@@ -191,80 +56,5 @@ h3 {
 
   100% {
     transform: rotate(360deg);
-  }
-}
-
-
-@media screen and (max-width: 1180px) {
-  #rightSearch {
-    display: none;
-  }
-
-  #leftSearch {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  #cloudBack {
-    background-image: none;
-  }
-
-  h1 {
-    font-size: 6vw;
-    color: white;
-    outline-color: #00008B;
-  }
-
-  h2 {
-    font-size: 4vw;
-  }
-}
-
-@media screen and (max-width: 840px) {
-  .weatherBox h2 {
-    font-size: 1.3em;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .fiveTens {
-    width: 30%;
-  }
-
-  .weatherBox h2 {
-    font-size: 1.6em;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  h1 {
-    font-size: 10vw;
-  }
-
-  h2 {
-    font-size: 7vw;
-  }
-
-  #wrapper {
-    width: 100%;
-  }
-
-  #weatherContainer {
-    width: 100%;
-  }
-
-  #map {
-    width: 100%;
-  }
-
-  .fiveTens {
-    width: 45%;
-  }
-
-  #daySelector>li {
-    margin: 0 2%;
   }
 }
