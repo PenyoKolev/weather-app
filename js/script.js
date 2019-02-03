@@ -26,7 +26,7 @@ $(document).ready(function () {
             APPID: "a824ef2e2591bd239228beab33789010",
             lat: lat,
             lon: lng,
-            units: unit, 
+            units: unit,
             cnt: "5"
         }).done(function (data) {
             data.list.forEach(function (el, i) {
@@ -51,7 +51,7 @@ $(document).ready(function () {
                 appendStr += ("<img src='" + iconUrl + "' alt='Icon'>");
                 appendStr += ("<p><strong>" + data.list[i].weather[0].main + ":</strong> " + data.list[i].weather[0].description + "</p>");
                 appendStr += ("<p><strong>Humidity: </strong>" + data.list[i].humidity + "</p>");
-                appendStr += ("<p><strong>Wind: </strong>" + data.list[i].speed + "</p>");
+                appendStr += ("<p><strong>Wind: </strong>" + data.list[i].speed + " " + fromDegToDir(data.list[0].deg) + "</p>");
                 appendStr += ("<p><strong>Pressure: </strong>" + data.list[i].pressure + "</p>");
 
                 $(idVar).html(appendStr);
@@ -62,8 +62,10 @@ $(document).ready(function () {
                 appendStrRight += ("<img src='http://openweathermap.org/img/w/" + data.list[0].weather[0].icon + ".png' alt='Icon'>");
                 appendStrCenter += ("<p><strong>Humidity: </strong>" + data.list[0].humidity + "</p>");
                 appendStrCenter += ("<p><strong>Wind: </strong>" + data.list[0].speed + "</p>");
-                appendStrCenter += ("<p><strong>Pressure: </strong>" + data.list[0].pressure + "</p>");
+                appendStrCenter += ("<p><strong>Direction: </strong>" + fromDegToDir(data.list[0].deg) + "</p>");
 
+
+                appendStrCenter += ("<p><strong>Pressure: </strong>" + data.list[0].pressure + "</p>");
                 $("#todayLeft").html(appendStrLeft);
                 $("#todayCenter").html(appendStrCenter);
                 $("#todayRight").html(appendStrRight);
@@ -121,8 +123,14 @@ $(document).ready(function () {
         });
     });
 
+    function fromDegToDir(deg) {
+        var val = Math.floor((deg / 22.5) + 0.5);
+        var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+        return arr[(val % 16)];
+    };
+
     $("#locSubmit").click(function () {
-        lat = $("#lat").val();  
+        lat = $("#lat").val();
         lng = $("#lng").val();
         loadWeather();
     });
