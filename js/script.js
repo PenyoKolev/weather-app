@@ -9,6 +9,7 @@ $(document).ready(function () {
     var lng = $("#lng").val();
     var unit = "metric";
     var selectDay = $("#daySelect").val();
+    var spinner = $("#loader");
     var address;
     var idVar;
     var infoContent;
@@ -20,11 +21,12 @@ $(document).ready(function () {
     var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     function loadWeather() {
+        spinner.show();
         $.get("http://api.openweathermap.org/data/2.5/forecast/daily", {
             APPID: "a824ef2e2591bd239228beab33789010",
             lat: lat,
             lon: lng,
-            units: unit, //here
+            units: unit, 
             cnt: "5"
         }).done(function (data) {
             data.list.forEach(function (el, i) {
@@ -69,6 +71,7 @@ $(document).ready(function () {
 
                 infoContent = "<h3>" + data.city.name + "</h3><img src='" + iconUrl + "' alt='Icon'>" + "<h3>" + Math.round(data.list[0].temp.max) + "/&deg" + Math.round(data.list[0].temp.min) + "&deg";
                 infowindow.setContent(infoContent);
+                spinner.hide();
             });
             $("#currentCity").html(data.city.name);
         });
@@ -116,6 +119,12 @@ $(document).ready(function () {
                 alert("Please enter a valid location");
             }
         });
+    });
+
+    $("#locSubmit").click(function () {
+        lat = $("#lat").val();  
+        lng = $("#lng").val();
+        loadWeather();
     });
 
     function updateInputs() {
