@@ -12,10 +12,6 @@ $(document).ready(function () {
     var spinner = $("#loader");
     var address;
     var idVar;
-    var infoContent;
-    var infowindow = new google.maps.InfoWindow({
-        content: infoContent
-    });
     var day;
     var today;
     var daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -63,16 +59,10 @@ $(document).ready(function () {
                 appendStrCenter += ("<p><strong>Humidity: </strong>" + data.list[0].humidity + "</p>");
                 appendStrCenter += ("<p><strong>Wind: </strong>" + data.list[0].speed + "</p>");
                 appendStrCenter += ("<p><strong>Direction: </strong>" + fromDegToDir(data.list[0].deg) + "</p>");
-
-
                 appendStrCenter += ("<p><strong>Pressure: </strong>" + data.list[0].pressure + "</p>");
                 $("#todayLeft").html(appendStrLeft);
                 $("#todayCenter").html(appendStrCenter);
                 $("#todayRight").html(appendStrRight);
-
-
-                infoContent = "<h3>" + data.city.name + "</h3><img src='" + iconUrl + "' alt='Icon'>" + "<h3>" + Math.round(data.list[0].temp.max) + "/&deg" + Math.round(data.list[0].temp.min) + "&deg";
-                infowindow.setContent(infoContent);
                 spinner.hide();
             });
             $("#currentCity").html(data.city.name);
@@ -123,17 +113,27 @@ $(document).ready(function () {
         });
     });
 
+    $("#locSubmit").click(function () {
+        var x = lat;
+        var y = lng;
+        if ($("#lat").val() < -90 || $("#lat").val() > 90) {
+            alert("Latitudes should be between -90 and 90 degrees");
+        } else if ($("#lng").val() < -180 || $("#lng").val() > 180) {
+            alert("Longitude should be between -180 and 180 degrees");
+        } else {
+            lat = $("#lat").val();
+            lng = $("#lng").val();
+            loadWeather();
+        }
+        lat = x;
+        lng = y;
+    });
+
     function fromDegToDir(deg) {
         var val = Math.floor((deg / 22.5) + 0.5);
         var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
         return arr[(val % 16)];
     };
-
-    $("#locSubmit").click(function () {
-        lat = $("#lat").val();
-        lng = $("#lng").val();
-        loadWeather();
-    });
 
     function updateInputs() {
         $("#lat").val(lat.toFixed(6));
